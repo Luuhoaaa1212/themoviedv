@@ -2,32 +2,229 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@layer base {
+  /* width */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
 
-@media (prefers-color-scheme: dark) {
+  /* Track */
+  ::-webkit-scrollbar-track {
+    @apply bg-inherit;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    @apply bg-[#dbdbdb] dark:bg-[#666666] rounded-xl;
+  }
+
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 142.1 76.2% 36.3%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 142.1 76.2% 36.3%;
+    --radius: 0rem;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 0 0% 95%;
+    --card: 24 9.8% 10%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 142.1 70.6% 45.3%;
+    --primary-foreground: 144.9 80.4% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 142.4 71.8% 29.2%;
+    
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    background: none;
+    width: 10px;
+    height: 10px;
+  }
+  .scrollbar-medium::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #dbdbdb;
+    border-radius: 100vh;
+    width: 10px;
+    height: 10px;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #dbdbdb;
+    border-radius: 100vh;
+    width: 10px;
+    height: 10px;
+  }
+
+  .header-custom-main {
+    min-width: 100%;
+    position: sticky;
+    padding: 12px 0;
+    inset: 0;
+    height: 64px;
+    transition: top 0.2s linear;
+    background-color: rgba(3, 37, 65, 1);
+    color: #ffff;
+    z-index: 1000;
+  }
+
+  .nav-custom-main {
+    padding: 0px 136px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .search-custom-main {
+    padding: 0px 136px;
+    width: 100%;
+  }
+
+  .btn-custom-main {
+    padding: 10px 26px;
+    background: linear-gradient(
+      to right,
+      rgba(30, 213, 169, 1) 0%,
+      rgba(1, 180, 228, 1) 100%
+    );
+    border-radius: 30px;
+    color: #fff;
+  }
+
+  .input-custom-main {
+    color: rgba(0, 0, 0, 0.5);
+    border: 0;
+    padding: 10px 20px;
+  }
+
+  .text-custom-main-active {
+    background: linear-gradient(to right, #c0fecf 0, #1ed5a9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: -webkit-text-fill-color 0.5s;
+    color: rgba(3, 37, 65, 1);
+    font-weight: 600;
+  }
+
+  .text-custom-secondary-active-main {
+    background: rgba(3, 37, 65, 1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: -webkit-text-fill-color 0.2s linear;
+    color: rgba(3, 37, 65, 1);
+    font-weight: 600;
+    transition-delay: 0.15s;
+  }
+
+  .btn-custom-main-active {
+    background-color: rgba(3, 37, 65, 1);
+    transition: all 0.5s linear;
+    transition-delay: 0.1s;
+  }
+
+  .btn-custom-main-active-secondary {
+    background: linear-gradient(to right, #c0fecf 0, #1ed5a9 100%);
+    transition: all 0.5s linear;
+    transition-delay: 0.1s;
+  }
+
+  .btn-group-main-custome-main {
+    border: 1px solid rgba(3, 37, 65, 1);
+  }
+
+  .btn-group-main-custome-secondary {
+    border: 1px solid rgba(30, 213, 169, 1);
+  }
+  .progress-ring {
+    transition: all 0.35s;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer components {
+  .header-custom {
+    @apply header-custom-main;
+  }
+  .nav-custom {
+    @apply nav-custom-main;
+  }
+  .search-custom {
+    @apply search-custom-main;
+  }
+  .btn-custom {
+    @apply btn-custom-main;
+  }
+  .input-custom {
+    @apply input-custom-main;
+  }
+  .text-custom-active {
+    @apply text-custom-main-active;
+  }
+  .text-custom-secondary-active {
+    @apply text-custom-secondary-active-main;
+  }
+  .btn-custom-active {
+    @apply btn-custom-main-active;
+  }
+  .btn-custom-active-secondary {
+    @apply btn-custom-main-active-secondary;
+  }
+  .btn-group-main-custome {
+    @apply btn-group-main-custome-main;
+  }
+  .btn-group-secondary-custome {
+    @apply btn-group-main-custome-secondary;
+  }
+  .progress-ring__circle {
+    @apply progress-ring;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
