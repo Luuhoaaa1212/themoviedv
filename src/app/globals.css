@@ -61,7 +61,6 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 142.4 71.8% 29.2%;
-    
   }
 }
 
@@ -103,7 +102,38 @@
     transition: top 0.2s linear;
     background-color: rgba(3, 37, 65, 1);
     color: #ffff;
-    z-index: 1000;
+    z-index: 120;
+  }
+  .loadingProcessHeader-custom-main {
+    height: 6px;
+    width: 0;
+    position: fixed;
+    top: 0;
+    z-index: 130;
+    left: 0;
+    right: 0;
+    border-radius: 10px;
+    background: linear-gradient(to right, #c0fecf 0, #1ed5a9 100%);
+    animation: fideOUt 5s linear;
+    animation-duration: 10s;
+  }
+  @keyframes fideOUt {
+    0% {
+      width: 0px;
+      left: 0%;
+    }
+    30% {
+      width: 400px;
+      left: 0%;
+    }
+    50% {
+      width: 400px;
+      left: 60%;
+    }
+    100% {
+      width: 400px;
+      left: 100%;
+    }
   }
 
   .nav-custom-main {
@@ -179,11 +209,21 @@
     transform: rotate(-90deg);
     transform-origin: 50% 50%;
   }
+  .bg-wrapper-main-custom {
+    background: linear-gradient(
+      to right,
+      rgba(3, 37, 65, 0.75) 0%,
+      rgba(3, 37, 65, 0.75) 100%
+    );
+  }
 }
 
 @layer components {
   .header-custom {
     @apply header-custom-main;
+  }
+  .loadingProcessHeader-main {
+    @apply loadingProcessHeader-custom-main;
   }
   .nav-custom {
     @apply nav-custom-main;
@@ -217,6 +257,9 @@
   }
   .progress-ring__circle {
     @apply progress-ring;
+  }
+  .bg-wrapper-main {
+    @apply bg-wrapper-main-custom;
   }
 }
 

@@ -14,6 +14,8 @@ import {
 } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
 import SearchItemTrending from "./SearchItemTrending";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 const Header = () => {
   const { scrollY } = useScroll();

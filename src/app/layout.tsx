@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import Header from "@/components/Header";
-import "./globals.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
+
 import ThemeProvider from "@/providers/ThemeProvider";
+import StoreProvider from "@/providers/StoreProvider";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+
+import "./globals.css";
+import Loader from "@/components/Loader";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -27,17 +31,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} font-poppins`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Header />
-          <div className="size-full px-24">{children}</div>
-          <Footer />
-        </ThemeProvider>
+      <body className={`${poppins.variable} font-poppins overflow-x-hidden`}>
+        <StoreProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Loader />
+            <Header />
+            <div className="size-full px-24">{children}</div>
+            <Footer />
+          </ThemeProvider>
+        </StoreProvider>
       </body>
     </html>
   );

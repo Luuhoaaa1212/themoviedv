@@ -23,3 +23,11 @@ export const randomImageBanner = () => {
 
   return images[random];
 };
+
+export const cliamsHeader = (headers: Headers) => {
+  const token = process.env.NEXT_PUBLIC_TOKEN_SECRET_KEY;
+  if (token) {
+    headers.set("authorization", `Bearer ${token}`);
+  }
+  return headers;
+};
